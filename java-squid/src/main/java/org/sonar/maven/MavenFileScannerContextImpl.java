@@ -43,6 +43,11 @@ public class MavenFileScannerContextImpl implements MavenFileScannerContext {
   }
 
   @Override
+  public File getFile() {
+    return file;
+  }
+
+  @Override
   public MavenProject getMavenProject() {
     return project;
   }

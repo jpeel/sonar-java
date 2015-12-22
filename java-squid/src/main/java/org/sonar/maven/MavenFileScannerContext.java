@@ -23,10 +23,13 @@ import com.google.common.annotations.Beta;
 import org.sonar.maven.model.LocatedTree;
 import org.sonar.maven.model.maven2.MavenProject;
 
+import java.io.File;
 import java.util.List;
 
 @Beta
 public interface MavenFileScannerContext {
+
+  File getFile();
 
   MavenProject getMavenProject();
 

@@ -27,6 +27,8 @@ import org.sonar.maven.MavenFileScannerContext;
 import org.sonar.maven.model.maven2.Dependency;
 import org.sonar.maven.model.maven2.MavenProject;
 
+import java.io.File;
+
 import static org.fest.assertions.Assertions.assertThat;
 
 public class MavenCheckVerifierTest {
@@ -34,6 +36,18 @@ public class MavenCheckVerifierTest {
   private static final String POM_WITH_ISSUES_AND_SECONDARIES = "src/test/files/MavenCheckVerifierWithSecondary.xml";
   private static final String POM_WITH_NO_ISSUE = "src/test/files/MavenCheckVerifierNoIssue.xml";
   private static final String POM_PARSE_ISSUE = "src/test/files/MavenCheckVerifierParseIssue.xml";
+
+  @Test
+  public void should_get_the_file() {
+    MavenCheckVerifier.verifyNoIssue(POM_WITH_NO_ISSUE, new MavenFileScanner() {
+      @Override
+      public void scanFile(MavenFileScannerContext context) {
+        File file = context.getFile();
+        assertThat(file).isNotNull();
+        assertThat(file.getName()).isEqualTo("MavenCheckVerifierNoIssue.xml");
+      }
+    });
+  }
 
   @Test
   public void should_detect_issues() {

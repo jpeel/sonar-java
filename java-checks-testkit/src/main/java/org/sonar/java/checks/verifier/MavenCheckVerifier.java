@@ -110,6 +110,11 @@ public class MavenCheckVerifier extends CheckVerifier {
     }
 
     @Override
+    public File getFile() {
+      return file;
+    }
+
+    @Override
     public MavenProject getMavenProject() {
       return project;
     }

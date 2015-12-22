@@ -58,8 +58,13 @@ public class MavenFileScannerContextImplTest {
   }
 
   @Test
-  public void getMavenProject() {
+  public void maven_project_should_never_be_null() {
     assertThat(context.getMavenProject()).isNotNull();
+  }
+
+  @Test
+  public void file_should_never_be_null() {
+    assertThat(context.getFile()).isNotNull();
   }
 
   @Test
